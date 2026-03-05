@@ -1,9 +1,9 @@
 spring:
   application:
-    name: jobtracker
+    name: careerflow
 
   datasource:
-    url: jdbc:mysql://localhost:3306/jobtracker?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/careerflow?useSSL=false&serverTimezone=UTC
     username: root
     password: yourpassword
     driver-class-name: com.mysql.cj.jdbc.Driver

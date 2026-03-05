@@ -1,4 +1,4 @@
-package com.mayank.jobtracker;
+package com.mayank.careerflow;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

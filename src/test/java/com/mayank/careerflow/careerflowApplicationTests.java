@@ -1,10 +1,10 @@
-package com.mayank.jobtracker;
+package com.mayank.careerflow;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JobtrackerApplicationTests {
+class careerflowApplicationTests {
 
 	@Test
 	void contextLoads() {

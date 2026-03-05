@@ -1,0 +1,80 @@
+[33mcommit 8fb2a3e9c21c8b7f891308825afa00e34518466e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Fri Mar 6 00:31:07 2026 +0530
+
+    Added system design diagram (ER, UML, Workflow)
+
+[33mcommit d77685009450deb5e9010c5aea0051aec5bd5929[m
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Mon Mar 2 10:24:51 2026 +0530
+
+    check file
+
+[33mcommit fa8cd7fdba7c4f08a7de08aa20833a7b3f6da9cd[m
+Merge: ff604cb ac94cef
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Wed Feb 25 10:56:15 2026 +0000
+
+    Merge pull request #2 from PurnimaSingh0602/patch-1
+    
+    Update script.js
+
+[33mcommit ff604cbb013102bcd6e211c76d246d2c1a49b6e5[m
+Merge: bac95ae 6b6b80b
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Wed Feb 25 10:55:58 2026 +0000
+
+    Merge pull request #4 from ArnavThapliyal/Dummi-Feature
+    
+    Dummi feature
+
+[33mcommit 6b6b80b4160817b26404e02e506648870d660d95[m
+Author: Arnav Thapliyal <arnavthapliyal8to@gmail.com>
+Date:   Wed Feb 25 15:45:52 2026 +0530
+
+    Added test file for dummy feature
+
+[33mcommit ac94cef273f3845be929348823c12675e7af51ce[m
+Author: PurnimaSingh0602 <purnima.singh0605@gmail.com>
+Date:   Wed Feb 25 15:14:37 2026 +0530
+
+    Update script.js
+
+[33mcommit 134563ccd3ae3f1317b513b0111d10fffdd2624f[m
+Author: Arnav Thapliyal <arnavthapliyal8to@gmail.com>
+Date:   Wed Feb 25 15:12:33 2026 +0530
+
+    Cleaning the code
+
+[33mcommit bac95ae1f7b2508f27b88475213bea82082dcfb9[m
+Merge: bddf87b 76b72dc
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Tue Feb 24 19:20:48 2026 +0000
+
+    Merge pull request #1 from mynk1877singh/feature/login-ui
+    
+    Add login UI with CSS and JS
+
+[33mcommit 76b72dc94ae428c526ff77551a888c8843413cde[m
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Tue Feb 24 19:05:01 2026 +0000
+
+    ADD javascipt
+
+[33mcommit 0494a6c86cda7c2198f16c651942599aac6562b8[m
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Tue Feb 24 19:04:04 2026 +0000
+
+    ADD styling for login page
+
+[33mcommit 3fc4922f96f08306abcbfd4c8a8d0e9f3b3f72ff[m
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Tue Feb 24 19:03:22 2026 +0000
+
+    ADD basic login page structure
+
+[33mcommit bddf87b7c8d4c4322d0be38e61d06953d9aeef22[m
+Author: Mayank Singh Chouhan <mayanksinghchouhan82@gmail.com>
+Date:   Mon Feb 23 09:24:40 2026 +0000
+
+    Intial Spring boot Setup with controller and MYSQL
