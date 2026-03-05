@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobTracker – UML Class Diagram</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0f2f5;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 20px 56px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: #4f46e5;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 20px;
+    padding: 3px 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.6px;
+  }
+
+  h1 span { color: #4f46e5; }
+
+  .subtitle {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 5px;
+    font-weight: 400;
+  }
+
+  .canvas {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 40px 36px 36px;
+    width: 100%;
+    max-width: 1080px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+  }
+
+  svg { width: 100%; height: auto; display: block; }
+
+  .footer-legend {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748b;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">UML · Class Diagram</div>
+  <h1>Job<span>Tracker</span></h1>
+  <p class="subtitle">Spring Boot Architecture · 4 classes · 3 dependency relationships</p>
+</header>
+
+<div class="canvas">
+<svg viewBox="0 0 960 660" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dashed dependency arrow (open head) -->
+    <marker id="dep-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polyline points="0,0 9,4 0,8" fill="none" stroke="#64748b" stroke-width="1.5"/>
+    </marker>
+    <!-- Solid uses arrow -->
+    <marker id="uses-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polyline points="0,0 9,4 0,8" fill="none" stroke="#4f46e5" stroke-width="1.8"/>
+    </marker>
+    <!-- Manage arrow (filled) -->
+    <marker id="manage-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polyline points="0,0 9,4 0,8" fill="none" stroke="#0ea5e9" stroke-width="1.8"/>
+    </marker>
+
+    <filter id="card-shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#00000011"/>
+    </filter>
+  </defs>
+
+  <!-- ──────────────────────────────────────────
+       LAYER: RELATIONSHIP ARROWS (drawn behind cards)
+  ────────────────────────────────────────── -->
+
+  <!-- JobController ──depends on──> JobService -->
+  <!-- From right edge of Controller to left edge of Service -->
+  <line x1="342" y1="148" x2="458" y2="148"
+        stroke="#64748b" stroke-width="1.8"
+        stroke-dasharray="7 4"
+        marker-end="url(#dep-arrow)"/>
+  <!-- Label -->
+  <rect x="364" y="130" width="72" height="18" rx="4" fill="#f8fafc"/>
+  <text x="400" y="143" text-anchor="middle" font-family="Inter" font-size="10" fill="#64748b">«uses»</text>
+
+  <!-- JobService ──uses──> JobRepository -->
+  <!-- From right edge of Service to left edge of Repo -->
+  <line x1="682" y1="148" x2="778" y2="148"
+        stroke="#4f46e5" stroke-width="1.8"
+        stroke-dasharray="7 4"
+        marker-end="url(#uses-arrow)"/>
+  <rect x="698" y="130" width="62" height="18" rx="4" fill="#f8fafc"/>
+  <text x="729" y="143" text-anchor="middle" font-family="Inter" font-size="10" fill="#4f46e5">«uses»</text>
+
+  <!-- JobRepository ──manages──> Job -->
+  <!-- From bottom of Repo down to top of Job entity -->
+  <line x1="860" y1="282" x2="860" y2="368"
+        stroke="#0ea5e9" stroke-width="1.8"
+        stroke-dasharray="7 4"
+        marker-end="url(#manage-arrow)"/>
+  <rect x="820" y="316" width="78" height="18" rx="4" fill="#f8fafc"/>
+  <text x="859" y="329" text-anchor="middle" font-family="Inter" font-size="10" fill="#0ea5e9">«manages»</text>
+
+
+  <!-- ──────────────────────────────────────────
+       CARD 1: JobController
+  ────────────────────────────────────────── -->
+  <g filter="url(#card-shadow)">
+    <!-- Card body -->
+    <rect x="40" y="60" width="302" height="222" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <!-- Header band -->
+    <rect x="40" y="60" width="302" height="52" rx="10" fill="#4f46e5"/>
+    <rect x="40" y="92" width="302" height="20" fill="#4f46e5"/>
+    <!-- Stereotype -->
+    <text x="191" y="82" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#a5b4fc">«Controller»</text>
+    <!-- Class name -->
+    <text x="191" y="100" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#ffffff">JobController</text>
+
+    <!-- Section divider -->
+    <line x1="40" y1="112" x2="342" y2="112" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- Fields section label -->
+    <text x="56" y="128" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">DEPENDENCIES</text>
+    <rect x="56" y="135" width="270" height="22" rx="5" fill="#f8fafc"/>
+    <text x="68" y="150" font-family="JetBrains Mono" font-size="11" fill="#64748b">– jobService : JobService</text>
+
+    <!-- Divider -->
+    <line x1="40" y1="162" x2="342" y2="162" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- Methods section label -->
+    <text x="56" y="177" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">METHODS</text>
+
+    <!-- Method rows -->
+    <rect x="56" y="182" width="270" height="20" rx="4" fill="#f5f3ff"/>
+    <text x="68" y="196" font-family="JetBrains Mono" font-size="11" fill="#4f46e5">+ getAllJobs() : List&lt;Job&gt;</text>
+
+    <rect x="56" y="205" width="270" height="20" rx="4" fill="#f8fafc"/>
+    <text x="68" y="219" font-family="JetBrains Mono" font-size="11" fill="#374151">+ getJobById(id) : Job</text>
+
+    <rect x="56" y="228" width="270" height="20" rx="4" fill="#f5f3ff"/>
+    <text x="68" y="242" font-family="JetBrains Mono" font-size="11" fill="#4f46e5">+ createJob(job) : Job</text>
+
+    <rect x="56" y="251" width="270" height="20" rx="4" fill="#f8fafc"/>
+    <text x="68" y="265" font-family="JetBrains Mono" font-size="11" fill="#374151">+ updateJob(id, job) : Job</text>
+
+    <rect x="56" y="274" width="270" height="20" rx="4" fill="#f5f3ff"/>
+    <text x="68" y="288" font-family="JetBrains Mono" font-size="11" fill="#4f46e5">+ deleteJob(id) : void</text>
+  </g>
+
+
+  <!-- ──────────────────────────────────────────
+       CARD 2: JobService
+  ────────────────────────────────────────── -->
+  <g filter="url(#card-shadow)">
+    <rect x="458" y="60" width="224" height="222" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="458" y="60" width="224" height="52" rx="10" fill="#7c3aed"/>
+    <rect x="458" y="92" width="224" height="20" fill="#7c3aed"/>
+    <text x="570" y="82" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#c4b5fd">«Service»</text>
+    <text x="570" y="100" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#ffffff">JobService</text>
+
+    <line x1="458" y1="112" x2="682" y2="112" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="474" y="128" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">DEPENDENCIES</text>
+    <rect x="474" y="135" width="190" height="22" rx="5" fill="#f8fafc"/>
+    <text x="486" y="150" font-family="JetBrains Mono" font-size="11" fill="#64748b">– jobRepo : JobRepository</text>
+
+    <line x1="458" y1="162" x2="682" y2="162" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="474" y="177" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">METHODS</text>
+
+    <rect x="474" y="182" width="190" height="20" rx="4" fill="#f5f0ff"/>
+    <text x="486" y="196" font-family="JetBrains Mono" font-size="11" fill="#7c3aed">+ getAllJobs()</text>
+
+    <rect x="474" y="205" width="190" height="20" rx="4" fill="#f8fafc"/>
+    <text x="486" y="219" font-family="JetBrains Mono" font-size="11" fill="#374151">+ getJobById(id)</text>
+
+    <rect x="474" y="228" width="190" height="20" rx="4" fill="#f5f0ff"/>
+    <text x="486" y="242" font-family="JetBrains Mono" font-size="11" fill="#7c3aed">+ saveJob(job)</text>
+
+    <rect x="474" y="251" width="190" height="20" rx="4" fill="#f8fafc"/>
+    <text x="486" y="265" font-family="JetBrains Mono" font-size="11" fill="#374151">+ updateJob(id, job)</text>
+
+    <rect x="474" y="274" width="190" height="20" rx="4" fill="#f5f0ff"/>
+    <text x="486" y="288" font-family="JetBrains Mono" font-size="11" fill="#7c3aed">+ deleteJob(id)</text>
+  </g>
+
+
+  <!-- ──────────────────────────────────────────
+       CARD 3: JobRepository
+  ────────────────────────────────────────── -->
+  <g filter="url(#card-shadow)">
+    <rect x="778" y="60" width="160" height="222" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="778" y="60" width="160" height="52" rx="10" fill="#0ea5e9"/>
+    <rect x="778" y="92" width="160" height="20" fill="#0ea5e9"/>
+    <text x="858" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#bae6fd">«Interface»</text>
+    <text x="858" y="96" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#ffffff">JobRepository</text>
+
+    <!-- Extends label -->
+    <line x1="778" y1="112" x2="938" y2="112" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="794" y="126" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">EXTENDS</text>
+    <rect x="794" y="131" width="128" height="22" rx="5" fill="#f0f9ff"/>
+    <text x="858" y="146" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0ea5e9">JpaRepository</text>
+
+    <line x1="778" y1="158" x2="938" y2="158" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="794" y="173" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">METHODS</text>
+
+    <rect x="794" y="178" width="128" height="20" rx="4" fill="#f0f9ff"/>
+    <text x="806" y="192" font-family="JetBrains Mono" font-size="11" fill="#0ea5e9">+ findAll()</text>
+
+    <rect x="794" y="201" width="128" height="20" rx="4" fill="#f8fafc"/>
+    <text x="806" y="215" font-family="JetBrains Mono" font-size="11" fill="#374151">+ findById(id)</text>
+
+    <rect x="794" y="224" width="128" height="20" rx="4" fill="#f0f9ff"/>
+    <text x="806" y="238" font-family="JetBrains Mono" font-size="11" fill="#0ea5e9">+ save(entity)</text>
+
+    <rect x="794" y="247" width="128" height="20" rx="4" fill="#f8fafc"/>
+    <text x="806" y="261" font-family="JetBrains Mono" font-size="11" fill="#374151">+ deleteById(id)</text>
+  </g>
+
+
+  <!-- ──────────────────────────────────────────
+       CARD 4: Job Entity
+  ────────────────────────────────────────── -->
+  <g filter="url(#card-shadow)">
+    <rect x="700" y="368" width="230" height="222" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="700" y="368" width="230" height="52" rx="10" fill="#f59e0b"/>
+    <rect x="700" y="400" width="230" height="20" fill="#f59e0b"/>
+    <text x="815" y="388" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#fef3c7">«Entity»</text>
+    <text x="815" y="406" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#ffffff">Job</text>
+
+    <line x1="700" y1="420" x2="930" y2="420" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="716" y="435" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">ATTRIBUTES</text>
+
+    <rect x="716" y="440" width="198" height="20" rx="4" fill="#fffbeb"/>
+    <text x="728" y="454" font-family="JetBrains Mono" font-size="11" fill="#b45309">– id : Long</text>
+    <!-- PK badge -->
+    <rect x="858" y="441" width="26" height="14" rx="3" fill="#f59e0b"/>
+    <text x="871" y="452" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">PK</text>
+
+    <rect x="716" y="463" width="198" height="20" rx="4" fill="#f8fafc"/>
+    <text x="728" y="477" font-family="JetBrains Mono" font-size="11" fill="#374151">– title : String</text>
+
+    <rect x="716" y="486" width="198" height="20" rx="4" fill="#fffbeb"/>
+    <text x="728" y="500" font-family="JetBrains Mono" font-size="11" fill="#b45309">– company : String</text>
+
+    <rect x="716" y="509" width="198" height="20" rx="4" fill="#f8fafc"/>
+    <text x="728" y="523" font-family="JetBrains Mono" font-size="11" fill="#374151">– location : String</text>
+
+    <rect x="716" y="532" width="198" height="20" rx="4" fill="#fffbeb"/>
+    <text x="728" y="546" font-family="JetBrains Mono" font-size="11" fill="#b45309">– status : String</text>
+
+    <!-- Divider -->
+    <line x1="700" y1="556" x2="930" y2="556" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="716" y="570" font-family="JetBrains Mono" font-size="9" fill="#94a3b8" letter-spacing="1">ANNOTATIONS</text>
+    <rect x="716" y="574" width="198" height="10" rx="3" fill="#fff9e6"/>
+    <text x="728" y="583" font-family="JetBrains Mono" font-size="9" fill="#d97706">@Entity  @Table(name="jobs")</text>
+  </g>
+
+
+  <!-- ──────────────────────────────────────────
+       LAYER LABELS (swimlane titles)
+  ────────────────────────────────────────── -->
+  <!-- Web Layer -->
+  <rect x="40" y="22" width="302" height="20" rx="5" fill="#eef2ff"/>
+  <text x="191" y="35" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#4f46e5" letter-spacing="1">WEB LAYER</text>
+
+  <!-- Service Layer -->
+  <rect x="458" y="22" width="224" height="20" rx="5" fill="#f5f3ff"/>
+  <text x="570" y="35" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#7c3aed" letter-spacing="1">SERVICE LAYER</text>
+
+  <!-- Persistence Layer -->
+  <rect x="778" y="22" width="160" height="20" rx="5" fill="#f0f9ff"/>
+  <text x="858" y="35" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#0ea5e9" letter-spacing="1">PERSISTENCE</text>
+
+  <!-- Data Layer -->
+  <rect x="700" y="330" width="230" height="20" rx="5" fill="#fffbeb"/>
+  <text x="815" y="343" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#f59e0b" letter-spacing="1">DATA MODEL</text>
+
+  <!-- Architecture flow banner -->
+  <rect x="40" y="610" width="898" height="30" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="489" y="630" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#64748b">
+    HTTP Request  →  JobController  →  JobService  →  JobRepository  →  Database
+  </text>
+
+</svg>
+
+<!-- Legend -->
+<div class="footer-legend">
+  <div class="legend-item">
+    <svg width="36" height="14"><line x1="0" y1="7" x2="28" y2="7" stroke="#64748b" stroke-width="1.8" stroke-dasharray="6 3"/><polyline points="22,3 30,7 22,11" fill="none" stroke="#64748b" stroke-width="1.5"/></svg>
+    «uses» dependency
+  </div>
+  <div class="legend-item">
+    <svg width="36" height="14"><line x1="0" y1="7" x2="28" y2="7" stroke="#4f46e5" stroke-width="1.8" stroke-dasharray="6 3"/><polyline points="22,3 30,7 22,11" fill="none" stroke="#4f46e5" stroke-width="1.5"/></svg>
+    «uses» (service)
+  </div>
+  <div class="legend-item">
+    <svg width="36" height="14"><line x1="0" y1="7" x2="28" y2="7" stroke="#0ea5e9" stroke-width="1.8" stroke-dasharray="6 3"/><polyline points="22,3 30,7 22,11" fill="none" stroke="#0ea5e9" stroke-width="1.5"/></svg>
+    «manages» entity
+  </div>
+  <div class="legend-item">
+    <svg width="14" height="14"><rect width="14" height="14" rx="2" fill="#f59e0b"/><text x="7" y="10" text-anchor="middle" font-family="JetBrains Mono" font-size="7" font-weight="700" fill="#fff">PK</text></svg>
+    Primary Key
+  </div>
+  <div class="legend-item">
+    <svg width="14" height="14"><rect width="14" height="14" rx="2" fill="#4f46e5" opacity="0.15" stroke="#4f46e5" stroke-width="1"/></svg>
+    + public method
+  </div>
+  <div class="legend-item">
+    <svg width="14" height="14"><rect width="14" height="14" rx="2" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1"/></svg>
+    – private field
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
